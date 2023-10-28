@@ -10,3 +10,8 @@ class BloodOath:
 
     def __repr__(self):
         return f"<BloodOath date={self.initiation_date}, follower={self.follower.name}, cult={self.cult.name}>"
+
+    @classmethod
+    def first_oath(cls):
+        sorted_oaths = sorted(cls.all, key=lambda oath: oath.initiation_date)
+        return sorted_oaths[0].follower

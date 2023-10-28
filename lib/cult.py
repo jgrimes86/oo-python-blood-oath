@@ -37,3 +37,31 @@ class Cult:
     @classmethod
     def find_by_founding_year(cls, searched_year):
         return [cult for cult in cls.all if cult.founding_year == searched_year]
+
+    def average_age(self):
+        total_ages = 0
+        for follower in self.cult_members():
+            total_ages += follower.age
+        return float(total_ages / self.cult_population())
+    
+    def followers_mottos(self):
+        for follower in self.cult_members():
+            print(follower.life_motto)
+
+    @classmethod
+    def least_popular(cls):
+        return sorted(cls.all, key=lambda cult: cult.cult_population())[0]
+
+    @classmethod
+    def most_common_location(cls):
+        cult_locations_list = [cult.location for cult in cls.all]
+        commonest_location = ""
+        count_number = 0
+        for location in cult_locations_list:
+            if cult_locations_list.count(location) > count_number:
+                commonest_location = location
+                count_number = cult_locations_list.count(location)
+        return commonest_location
+
+
+
