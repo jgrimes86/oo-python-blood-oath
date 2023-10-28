@@ -5,11 +5,12 @@ class Cult:
 
     all = []
 
-    def __init__(self, name, location, founding_year, slogan):
+    def __init__(self, name, location, founding_year, slogan, minimum_age=0):
         self.name = name
         self.location = location
         self.founding_year = founding_year
         self.slogan = slogan
+        self.minimum_age = minimum_age
         Cult.all.append(self)
 
     def __repr__(self):

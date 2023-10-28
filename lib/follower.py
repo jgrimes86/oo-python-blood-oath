@@ -57,4 +57,10 @@ class Follower:
 
         return sorted_followers[0:10]
     
-
+    def fellow_cult_members(self):
+        fellow_followers = []
+        for cult in self.cults():
+            for member in cult.cult_members():
+                if member not in fellow_followers:
+                    fellow_followers.append(member)
+        return fellow_followers
